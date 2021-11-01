@@ -1,24 +1,39 @@
-# README
+# <チルシェア>
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+ユーザ同士でお気に入りの場所、くつろげる場所、チルできる場所を共有できるサービスです。
+お互いに教え合いユーザ同士繋がっていただけるような空間を提供しています。
+また、チルできる場所をご自身で探していただくこともできます。
 
-Things you may want to cover:
+### サイトテーマ
+みんなでチルをシェア
 
-* Ruby version
+### テーマを選んだ理由
+コロナ禍や仕事疲れで、くつろげる空間や落ち着ける場所などを求めている人が多いと感じ、チルできる場所を共有できたらいいなと思うことが理由です。
+これらを解決するために、チルできる場所を専門に共有できるサービスを提供できればいいなと感じました。
+チルシェアを通じて、多くの人が繋がり、チルしていただくことが目的です。
 
-* System dependencies
 
-* Configuration
+### ターゲットユーザ
+くつろげる場所をを探している方
 
-* Database creation
+### 主な利用シーン
+- くつろげる場所を探したい
+- チルできるおすすめのお店、場所などを共有したい
+- チル好きな人たちと繋がりたい
 
-* Database initialization
+## 設計書
+- ER図、UIフローは[こちら]()から
+- ワイヤーフレームは[こちら]()から。
+- テーブル定義書は[こちら]()から。
+- アプリケーション詳細設計は[こちら]()から。
 
-* How to run the test suite
+## チャレンジ要素一覧
+チャレンジ要素一覧は[こちら](https://docs.google.com/spreadsheets/d/1VKaLuJH5Ro_iB7kOVr0D30yH0FMGL-h1geXoN1SuSVA/edit#gid=0)
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9

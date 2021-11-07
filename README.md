@@ -25,10 +25,10 @@
 - チル好きな人たちと繋がりたい時
 
 ## 設計書
-- ER図、UIフローは[こちら]()から
-- ワイヤーフレームは[こちら]()から。
-- テーブル定義書は[こちら]()から。
-- アプリケーション詳細設計は[こちら]()から。
+- ER図、UIフローは[こちら](https://app.diagrams.net/#G1JlG0cAztG1R3AVvn6L-hiEJlTD2eZs1u)から
+- ワイヤーフレームは[こちら](https://app.diagrams.net/#G11gnGDfxObVigI9k_4xaV6LrOaoS_FV9Z)から。
+- テーブル定義書は[こちら](https://docs.google.com/spreadsheets/d/1RkerxcOqS9flLZwk0_KIfC3gCwV3CWJdKvtrYucquuM/edit?usp=sharing)から。
+- アプリケーション詳細設計は[こちら](https://docs.google.com/spreadsheets/d/1giIzAuMZTE43dv1w4r3wBVpKDDGtxPZ4vFZt1puXDsw/edit?usp=sharing)から。
 
 ## チャレンジ要素一覧
 チャレンジ要素一覧は[こちら](https://docs.google.com/spreadsheets/d/1VKaLuJH5Ro_iB7kOVr0D30yH0FMGL-h1geXoN1SuSVA/edit#gid=0)

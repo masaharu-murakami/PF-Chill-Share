@@ -7,7 +7,7 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
-
+  
   #＜フォロー・フォロワー機能＞
   # 自分がフォローする側の関係性
   has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
@@ -30,4 +30,5 @@ class User < ApplicationRecord
     followings.include?(user)
   end
 
+  attachment :profile_image
 end

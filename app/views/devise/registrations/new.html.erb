@@ -1,0 +1,41 @@
+<div class="container mt-5">
+  <div class="card col-sm-4 mx-auto mt-3">
+    <div class="card-body">
+        <h2 class="card-title mb-4 text-center">
+          アカウント作成
+        </h2>
+          <%= form_with model: @user, url: user_registration_path, local: true do |f| %>
+            <div class="form-group">
+              <%= f.label :ニックネーム, class:"form-label" %>
+              <%= f.text_field :nickname, autofocus: true, autocomplete: "nickname", class:"form-control border-dark" %>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :メールアドレス, class:"form-label" %>
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control border-dark"  %>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :パスワード（６文字以上）, class:"form-label" %>
+              <%= f.password_field :password, autocomplete: "new-password", class:"form-control border-dark" %>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :パスワード（確認用）, class:"form-label" %>
+              <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"form-control border-dark" %>
+            </div>
+
+            <div class="form-group">
+              <%= f.submit "アカウント作成" %>
+            </div>
+            <% end %>
+            <div class="row justify-content-center">
+              <h5>既に登録済みの方は</h5>
+            </div>
+            <div class="row justify-content-center">
+              <p><%= link_to "こちら", new_user_session_path %>からログインしてください。</p>
+            </div>
+    </div>
+  </div>
+</div>
+         <%= render "devise/shared/error_messages", resource: resource %>

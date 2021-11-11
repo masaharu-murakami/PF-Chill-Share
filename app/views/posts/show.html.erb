@@ -1,0 +1,30 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-2">
+      <h2>User info</h2>
+    </div>
+    <div class="card col-md-6 mx-auto mt-3">
+      <div class="card-body">
+        <h5 class="card-title mb-4 text-center"><%= @post.title %></h5>
+         <%= attachment_image_tag @post, :image, fallback: "no_image.jpg", size: "350x400", class: "card-img-top" %>
+              <div>
+                いいね❤予定
+              </div>
+              <div>
+              <strong>ニックネーム表示予定<%#= @user.nickname %></strong>
+              </div>
+              <div>
+              コメント表示
+              </div>
+              <div>
+              コメント投稿
+              </div>
+      </div>
+              <div class="card-body">
+                <%= link_to "編集する", edit_post_path(@post), class: "btn btn-success " %>
+                <%= link_to "削除する", post_path(@post), method: :delete, data: {confirm: "この投稿を消しますか？"},  class: "btn btn-success" %>
+              </div>
+
+    </div>
+  </div>
+</div>

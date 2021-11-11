@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: {
+    sessions: "users/sessions",
+    registrations: "users/registrations",
+    update: "users/update"
+  }
+
   root to: 'homes#top'
 
   resources :users, only: [:show, :edit, :update] do
@@ -8,7 +13,6 @@ Rails.application.routes.draw do
         get 'confirm'
         patch 'quit'
       end
-    get '/my_page' => 'users#show'
     get 'followings' => 'relationships#followings', as: 'followings'
     get 'followers' => 'relationships#followers', as: 'followers'
   end

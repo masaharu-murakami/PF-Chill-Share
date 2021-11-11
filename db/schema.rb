@@ -10,9 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_09_140454) do
+ActiveRecord::Schema.define(version: 2021_11_08_051101) do
 
   create_table "comments", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "post_id", null: false
+    t.text "comment", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -23,6 +26,8 @@ ActiveRecord::Schema.define(version: 2021_11_09_140454) do
   end
 
   create_table "likes", force: :cascade do |t|
+    t.integer "usre_id", null: false
+    t.integer "post_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -39,6 +44,8 @@ ActiveRecord::Schema.define(version: 2021_11_09_140454) do
   end
 
   create_table "relationships", force: :cascade do |t|
+    t.integer "follower_id", null: false
+    t.integer "followed_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -50,6 +57,8 @@ ActiveRecord::Schema.define(version: 2021_11_09_140454) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.string "nickname", null: false
+    t.string "profile_image_id"
+    t.boolean "is_deleted", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true

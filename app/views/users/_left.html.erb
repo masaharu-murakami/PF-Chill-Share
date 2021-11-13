@@ -7,22 +7,21 @@
       <%= attachment_image_tag user, :profile_image, format: 'jpeg', fallback: "no_image.jpg", size: "100x100", class: "rounded-circle" %>
     </tr>
     <tr>
-      <td>name</td>
-      <td><%= user.nickname %></td>
+      <td>ニックネーム：<%= user.nickname %></td>
     </tr>
 
     <tr>
-      <td>フォロー</td>
+      <td>フォロー：</td>
     </tr>
 
     <tr>
-      <td>フォロワー</td>
+      <td>フォロワー：</td>
     </tr>
 
-    <%# if user.id == current_user.id %>
+    <% if user.id == current_user.id %>
     <tr>
     <td><%= link_to " ", edit_user_path(user), class: "btn btn-outline-secondary btn-block fas fa-user-cog" %></td>
     </tr>
-    <%# end %>
+    <% end %>
   </tbody>
 </table>

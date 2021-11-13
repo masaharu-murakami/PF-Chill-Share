@@ -1,4 +1,10 @@
 class PostsController < ApplicationController
+before_action :ensure_correct_user,{only: [:edit,:update,:destroy]}
+
+  def index
+    @posts = Post.all
+  end
+
   def new
     @post = Post.new
   end
@@ -15,10 +21,6 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-  end
-
-  def index
-    @posts = Post.all
   end
 
   def edit

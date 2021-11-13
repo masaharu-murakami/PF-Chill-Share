@@ -1,17 +1,25 @@
-<div class="container px-5 px-sm-0">
-   <div class="row">
-    <div class="col-md-3">
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-lg-3 col-md-3">
         <%= render 'users/left', user: @user, post: @post %>
         </div>
-
-        <div class="col-md-8 offset-md-1">
-        <h2>Books</h2>
-        <table class='table table-hover '>
-          <thead>
-            <tr>
-            <th></th>
-            <th>Title</th>
-            <th>Opinion</th>
-            <th colspan="3"></th>
-          </tr>
-        </thead>
+  <% @posts.each do |post| %>
+    <div class="col-lg-3 col-md-6 mb-4">
+      <div class="card-deck" style="width: 18rem;">
+        <div class="card">
+            <div class="card-img-top"><%= attachment_image_tag post, :image, fallback: "no_image.jpg", class: "card-img-top" %></div>
+          <div class="card-body">
+            <h5 class="card-title"><%=link_to post.title,post_path(post),class: "linkname",data: {"turbolinks" => false} %></h5>
+            <p class="card-text">投稿者：<%= post.user.nickname %></p>
+            <p class="card-text">レビュー</p>
+            <p class="card-text">いいね数</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  </div>
+  <div class="row justify-content-center">
+    <%= paginate @posts %>
+  </div>
+</div>

@@ -11,17 +11,21 @@
     </tr>
 
     <tr>
-      <td>フォロー：</td>
+      <td>フォロー：<%= user.followings.count %></td>
     </tr>
 
     <tr>
-      <td>フォロワー：</td>
+      <td>フォロワー：<%= user.followers.count %></td>
     </tr>
 
     <% if user.id == current_user.id %>
     <tr>
     <td><%= link_to " ", edit_user_path(user), class: "btn btn-outline-secondary btn-block fas fa-user-cog" %></td>
     <td><%= link_to "退会", confirm_users_path(@user.id), class:"btn btn-outline-info btn-block btn-radius grow" %></td>
+    </tr>
+    <% else %>
+    <tr>
+    <td><%= render "/relationships/info", user: @user %></td>
     </tr>
     <% end %>
   </tbody>

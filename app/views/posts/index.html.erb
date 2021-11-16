@@ -7,7 +7,7 @@
             <div class="card-img-top"><%= attachment_image_tag post, :image, fallback: "no_image.jpg", class: "card-img-top" %></div>
           <div class="card-body">
             <h5 class="card-title"><%=link_to post.title,post_path(post),class: "linkname",data: {"turbolinks" => false} %></h5>
-            <p class="card-text">投稿者：<%= post.user.nickname %></p>
+            <p class="card-text">投稿者：<%=link_to post.user.nickname,user_path(post),class: "linkname",data: {"turbolinks" => false} %></p>
             <p class="card-text">レビュー</p>
             <div id="likes_btn_<%= post.id %>">
               <p class="card-text"><%= render "likes/like", { post: post} %></p>

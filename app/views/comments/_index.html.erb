@@ -1,0 +1,12 @@
+<% post.comments.each do |comment| %>
+  <div class="mb-2">
+    <%= link_to attachment_image_tag(comment.user, :profile_image, format: "jpeg", fallback: "no_image.jpg", size:"30x30", class: "rounded-circle"), user_path(comment.user_id) %>
+    <strong><%= comment.user.nickname %></strong>
+    <%= comment.comment %>
+    <% if ((user == current_user) || (comment.user == current_user)) %>
+      <%= link_to post_comment_path(comment.post, comment), method: :delete, remote: true, class: "btn btn-default" do %>
+        <i class="fas fa-times"></i>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>

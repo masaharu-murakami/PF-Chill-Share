@@ -1,5 +1,6 @@
 <%= form_with model: [post, comment],  class: "w-100", remote: true do |f| %>
   <%= f.hidden_field :user_id, value: current_user.id %>
   <%= f.hidden_field :post_id, value: post.id %>
-  <%= f.text_field :comment, class: "form-control comment-input border-0", placeholder: "コメント ...", autocomplete: :off %>
+  <%= f.text_field :comment, class: "form-control comment-input border-0", placeholder: "コメント入力する ...", autocomplete: :off %>
+  
 <% end %>

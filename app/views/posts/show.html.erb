@@ -1,7 +1,7 @@
 <div class="container mt-5">
   <div class="row">
-    <div class="col-md-2">
-      <h2>User info</h2>
+    <div class="col-lg-3 col-md-3">
+    <%= render 'users/left', user: @user, post: @post %>
     </div>
     <div class="card col-md-6 mx-auto mt-3">
       <div class="card-body">
@@ -14,17 +14,25 @@
               <strong>ニックネーム表示予定<%#= @user.nickname %></strong>
               </div>
               <div>
-              コメント表示
+              コメント表示 <%= render "comments/index", { post: @post, user: @user} %>
               </div>
               <div>
               コメント投稿
               </div>
+              <div class="row actions" id="comment_form_post_<%= @post.id %>">
+              <%= render "/comments/form", { post: @post, comment: @comment} %>
+              </div>
       </div>
+
+              <% if @post.user_id == current_user.id %>
               <div class="card-body">
                 <%= link_to "編集する", edit_post_path(@post), class: "btn btn-success " %>
                 <%= link_to "削除する", post_path(@post), method: :delete, data: {confirm: "この投稿を消しますか？"},  class: "btn btn-success" %>
               </div>
-
+              <div id="comment_post_<%= @post.id %>">
+              <%= render "/comments/index", { post: @post, user: @user} %>
+              </div>
+              <% end %>
     </div>
   </div>
 </div>

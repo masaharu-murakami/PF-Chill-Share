@@ -49,6 +49,21 @@
         </div>
       </nav>
     </header>
-    <%= yield %>
+       <!--メイン部分-->
+    <main>
+      <%= yield %>
+    </main>
+    <!--フッター部分-->
+    <footer class="footer mt-5">
+      <nav class="navbar">
+        <span class="navbar-text m-auto">
+          <% if user_signed_in? %>
+            <p><%= link_to 'お問い合わせ',inquiry_path,class: 'nav-link text-dark' %></p>
+          <% else %>
+            <p>©chillshare</p>
+          <% end %>
+        </span>
+      </nav>
+    </footer>
   </body>
 </html>

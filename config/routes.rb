@@ -22,9 +22,7 @@ Rails.application.routes.draw do
     resources :comments, only: [:create, :destroy]
   end
 
-  get   'inquiries'         => 'inquiries#index'     # 入力画面
-  post  'inquiries/confirm' => 'inquiries#confirm'   # 確認画面
-  post  'inquiries/thanks'  => 'inquiries#thanks'    # 送信完了画面
-
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  get   'inquiry'         => 'inquiry#index'     # 入力画面
+  post  'inquiry/confirm' => 'inquiry#confirm'   # 確認画面
+  post  'inquiry/thanks'  => 'inquiry#thanks'    # 送信完了画面
 end

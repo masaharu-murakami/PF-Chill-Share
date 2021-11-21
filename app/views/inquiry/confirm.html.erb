@@ -1,0 +1,39 @@
+<div class="container mt-5">
+  <div class="col mx-auto">
+    <div class="card form-wrap">
+      <div class="card-body">
+        <h4 class="card-title mb-5 text-center">
+          お問い合わせ
+        </h4>
+        <%= form_with model: @inquiry, url: inquiry_thanks_path, method: :post, local: true do |f| %>
+          <div class="row">
+            <div class="col-md-3 offset-md-1">
+              <%= f.label :お名前, class:"bmd-label-floating" %>
+              <%= f.hidden_field :name, autocomplete: "name" %>
+            </div>
+            <div class="col-md-4 offset-md-3">
+              <%= @inquiry.name %>
+            </div>
+            <div class="col-md-3 offset-md-1">
+              <%= f.label :メールアドレス, class:"bmd-label-floating" %>
+              <%= f.hidden_field :email, autocomplete: "email" %>
+            </div>
+            <div class="col-md-4 offset-md-3">
+              <%= @inquiry.email %>
+            </div>
+            <div class="col-md-3 offset-md-1">
+              <%= f.label :お問い合わせ内容, class:"bmd-label-floating" %>
+              <%= f.hidden_field :message, autocomplete: "message" %>
+            </div>
+            <div class="col-md-4 offset-md-3">
+              <%= simple_format(@inquiry.message) %>
+            </div>
+          </div>
+          <div>
+            <%= f.submit "送信する", class:"btn btn-outline-dark btn-block btn-raised mt-3" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

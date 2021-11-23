@@ -11,7 +11,22 @@
           <div class="card-body">
             <h5 class="card-title"><%=link_to post.title,post_path(post),class: "linkname",data: {"turbolinks" => false} %></h5>
             <p class="card-text">投稿者：<%=link_to post.user.nickname,user_path(post),class: "linkname",data: {"turbolinks" => false} %></p>
-            <p class="card-text">レビュー</p>
+
+          <!--星評価-->
+            <p class="card-text">レビュー
+            <div id="star-rate-<%= post.id %>"></div>
+            <script>
+            $('#star-rate-<%= post.id %>').raty({
+              size: 36,
+              starOff:  '<%= asset_path('star-off.png') %>',
+              starOn : '<%= asset_path('star-on.png') %>',
+              starHalf: '<%= asset_path('star-half.png') %>',
+              half: true,
+              readOnly: true,
+              score: <%= post.rate %>,
+             });
+            </script>
+            </p>
             <p class="card-text"><%= render "likes/like", { post: post} %></p>
           </div>
         </div>

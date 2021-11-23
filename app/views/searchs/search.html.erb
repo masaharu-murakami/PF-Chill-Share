@@ -1,0 +1,9 @@
+<div class="container mt-5">
+  <% if @model == 'user' %>
+  <h3 class="mx-auto">【Usersモデルの検索結果】検索ワード：<%= @content %></h3>
+  <%= render 'users/index', users: @records %>
+<% else @model == 'posts' %>
+  <h3 class="mx-auto">【Postsモデルの検索結果】検索ワード：<%= @content %></h3>
+    <%= render 'posts/index', posts: @records %>
+<% end %>
+</div>

@@ -1,0 +1,12 @@
+<!--検索結果一覧(ユーザー)-->
+<div class="container mt-5">
+  <div class="card col-sm-5 mx-auto mt-3">
+    <% users.each do |user| %>
+        <li class="mx-auto"><%= link_to user_path(user) do %>
+          <%= user.nickname %><br>
+        </li>
+        <% end %>
+      <% end %>
+  </div>
+
+</div>

@@ -1,38 +1,93 @@
 <div class="container mt-5">
   <div class="row">
+    <!--サイドバー-->
     <div class="col-lg-3 col-md-3">
-    <%= render 'users/left', user: @user, post: @post %>
+      <%= render 'users/left', user: @user, post: @post %>
     </div>
+
     <div class="card col-md-6 mx-auto mt-3">
       <div class="card-body">
-        <h5 class="card-title mb-4 text-center"><%= @post.title %></h5>
+        <h5 class="card-title mb-4 text-center">
+          <%= @post.title %>
+        </h5>
          <%= attachment_image_tag @post, :image, fallback: "no_image.jpg", size: "350x400", class: "card-img-top" %>
-              <div>
-                いいね❤予定
-              </div>
-              <div>
-              <strong>ニックネーム表示予定<%#= @user.nickname %></strong>
-              </div>
-              <div>
-              コメント表示 <%= render "comments/index", { post: @post, user: @user} %>
-              </div>
-              <div>
-              コメント投稿
-              </div>
-              <div class="row actions" id="comment_form_post_<%= @post.id %>">
-              <%= render "/comments/form", { post: @post, comment: @comment} %>
-              </div>
-      </div>
+            <!--いいね数表示-->
+            <div id="likes_btn_<%= @post.id %>">
+              <%= render "likes/like", { post: @post} %>
+            </div>
 
+            <!--レビュー機能-->
+            <p class="card-text">レビュー
+            <div id="star-rate-<%= post.id %>"></div>
+            <script>
+            $('#star-rate-<%= post.id %>').raty({
+              size: 36,
+              starOff:  '<%= asset_path('star-off.png') %>',
+              starOn : '<%= asset_path('star-on.png') %>',
+              starHalf: '<%= asset_path('star-half.png') %>',
+              half: true,
+              readOnly: true,
+              score: <%= post.rate %>,
+             });
+            </script>
+            </p>
+
+            <div>
+              <strong>ニックネーム:<%= @user.nickname %></strong>
+            </div>
+          <!--コメント機能-->
+            <div class="row actions" id="comment_form_post_<%= @post.id %>">
+              <%= render "/comments/form", { post: @post, comment: @comment} %>
+            </div>
+            <div>
+              コメント一覧 <%= render "comments/index", { post: @post, user: @user} %>
+            </div>
+      </div>
+            <!--編集・削除ボタン-->
               <% if @post.user_id == current_user.id %>
               <div class="card-body">
                 <%= link_to "編集する", edit_post_path(@post), class: "btn btn-success " %>
                 <%= link_to "削除する", post_path(@post), method: :delete, data: {confirm: "この投稿を消しますか？"},  class: "btn btn-success" %>
               </div>
-              <div id="comment_post_<%= @post.id %>">
-              <%= render "/comments/index", { post: @post, user: @user} %>
-              </div>
-              <% end %>
+
+            <!--地図表示-->
+            <script type="text/javascript">
+          　function initMap() {
+            var test ={lat: <%= post.latitude %>, lng: <%= post.longitude %>};
+            var map = new google.maps.Map(document.getElementById('map'), {
+                      zoom: 15,
+                      center: test
+                      });
+            var transitLayer = new google.maps.TransitLayer();
+            transitLayer.setMap(map);
+
+            var contentString = '住所：<%= post.address %>';
+            var infowindow = new google.maps.InfoWindow({
+              content: contentString
+            });
+
+
+            var marker = new google.maps.Marker({
+                          position:test,
+                          map: map,
+                          title: contentString
+                         });
+
+             marker.addListener('click', function() {
+               infowindow.open(map, marker);
+             　　　});
+         　　　　 }
+       　　 </script>
+
+
+        <script async defer
+                      src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyD1L5xEzCmaOkfXXsZOaXGIoNudKZEboaY&callback=initMap">
+        </script>
+        <style type="text/css">
+          #map { height: 200px;
+                 width: 70%;}
+        </style>
+        <div id="map"></div>
     </div>
   </div>
 </div>

@@ -1,0 +1,30 @@
+<!--検索結果一覧(投稿)-->
+<table class="table table-hover table-borderless table-inverse ">
+    <thead>
+        <tr>
+            <th>投稿者名</th>
+            <th>タイトル</th>
+            <th>本文</th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody id="post">
+    <% posts.each do |post| %>
+      <tr>
+        <td><%= post.user.nickname %></td>
+        <td><%= post.title %></td>
+        <td><%= post.introduction %></td>
+        <td><%= link_to "詳細", post_path(post) %></td>
+        <% if post.user == current_user %>
+          <td><%= link_to "編集", edit_post_path(post) %></td>
+          <td><%= link_to "削除", post_path(post), method: :delete, remote: true %></td>
+        <% else %>
+          <td></td>
+          <td></td>
+        <% end %>
+      </tr>
+    <% end %>
+    </tbody>
+</table>

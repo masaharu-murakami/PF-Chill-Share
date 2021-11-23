@@ -1,23 +1,34 @@
+<!--サイドバーでユーザー情報を表示-->
 <h2>アカウント情報</h2>
-
-
 <table class="table">
   <tbody>
+    <!--プロフィール画像-->
     <tr>
       <%= attachment_image_tag user, :profile_image, format: 'jpeg', fallback: "no_image.jpg", size: "100x100", class: "rounded-circle" %>
     </tr>
+    <!--ニックネーム-->
     <tr>
-      <td>ニックネーム：<%= user.nickname %></td>
+      <td><%= user.nickname %></td>
     </tr>
 
+    <!--フォロー数-->
     <tr>
-      <td>フォロー：<%= user.followings.count %></td>
+      <td>
+      <%= link_to user_followings_path(user.id) do %>
+        <p>フォロー：<%= user.followings.count %></p>
+      <% end %>
+      </td>
+    </tr>
+    <!--フォロワー数-->
+    <tr>
+      <td>
+      <%= link_to user_followers_path(current_user.id) do %>
+        <p>フォロワー：<%= user.followers.count %></p>
+      <% end %>
+      </td>
     </tr>
 
-    <tr>
-      <td>フォロワー：<%= user.followers.count %></td>
-    </tr>
-
+    <!--退会・アカウント編集ボタン-->
     <% if user.id == current_user.id %>
     <tr>
     <td><%= link_to " ", edit_user_path(user), class: "btn btn-outline-secondary btn-block fas fa-user-cog" %></td>
@@ -25,6 +36,8 @@
     </tr>
     <% else %>
     <tr>
+
+    <!--フォロー・フォロー解除ボタン-->
     <td><%= render "/relationships/info", user: @user %></td>
     </tr>
     <% end %>

@@ -24,17 +24,20 @@
               <%= f.label :住所, class:"form-label" %>
               <%= f.text_area :address, autocomplete: "new-password", class:"form-control border-dark" %>
             </div>
-
             <!--レビュー機能-->
             <div class="form-group row" id="star">
               <%= f.label :rate,'評価 ', class:'col-md-3 col-form-label' %>
               <%= f.hidden_field :rate, id: :review_star %>
             </div>
 
-            <!--レビュー機能のjavascript-->
+            <div class="form-group">
+              <%= f.submit "投稿する", class:"btn btn-success btn-block" %>
+            </div>
+            <% end %>
+
             <script>
               $('#star').raty({
-              size     : 36,
+              size     : 35,
               starOff:  '<%= asset_path('star-off.png') %>',
               starOn : '<%= asset_path('star-on.png') %>',
               starHalf: '<%= asset_path('star-half.png') %>',
@@ -42,11 +45,6 @@
               half: true,
               });
             </script>
-            
-            <div class="form-group">
-              <%= f.submit "投稿する", class:"btn btn-success btn-block" %>
-            </div>
-            <% end %>
     </div>
   </div>
 </div>

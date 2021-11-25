@@ -17,20 +17,19 @@
             </div>
 
             <!--レビュー機能-->
-            <p class="card-text">レビュー
-            <div id="star-rate-<%= post.id %>"></div>
+            <p class="card-text">レビュー</P>
+            <div id="star-rate-<%= @post.id %>"></div>
             <script>
-            $('#star-rate-<%= post.id %>').raty({
+            $('#star<%= @post.id %>').raty({
               size: 36,
               starOff:  '<%= asset_path('star-off.png') %>',
               starOn : '<%= asset_path('star-on.png') %>',
               starHalf: '<%= asset_path('star-half.png') %>',
               half: true,
               readOnly: true,
-              score: <%= post.rate %>,
+              score: <%= @post.rate %>,
              });
             </script>
-            </p>
 
             <div>
               <strong>ニックネーム:<%= @user.nickname %></strong>
@@ -53,7 +52,7 @@
             <!--地図表示-->
             <script type="text/javascript">
           　function initMap() {
-            var test ={lat: <%= post.latitude %>, lng: <%= post.longitude %>};
+            var test ={lat: <%= @post.latitude %>, lng: <%= @post.longitude %>};
             var map = new google.maps.Map(document.getElementById('map'), {
                       zoom: 15,
                       center: test
@@ -61,7 +60,7 @@
             var transitLayer = new google.maps.TransitLayer();
             transitLayer.setMap(map);
 
-            var contentString = '住所：<%= post.address %>';
+            var contentString = '住所：<%= @post.address %>';
             var infowindow = new google.maps.InfoWindow({
               content: contentString
             });
@@ -91,3 +90,4 @@
     </div>
   </div>
 </div>
+<% end %>

@@ -1,5 +1,5 @@
 class HomesController < ApplicationController
   def top
-    @posts = Post.all
+    @posts = Post.limit(4).order('created_at DESC')
   end
 end

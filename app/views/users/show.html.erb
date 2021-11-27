@@ -13,8 +13,7 @@
             <p class="card-text">投稿者：<%=link_to post.user.nickname,user_path(post),class: "linkname",data: {"turbolinks" => false} %></p>
 
           <!--星評価-->
-            <p class="card-text">レビュー
-            <div id="star-rate-<%= post.id %>"></div>
+            <div class="card-text" id="star-rate-<%= post.id %>">評価：</div>
             <script>
             $('#star-rate-<%= post.id %>').raty({
               size: 36,
@@ -26,7 +25,6 @@
               score: <%= post.rate %>,
              });
             </script>
-            </p>
             <p class="card-text"><%= render "likes/like", { post: post} %></p>
           </div>
         </div>

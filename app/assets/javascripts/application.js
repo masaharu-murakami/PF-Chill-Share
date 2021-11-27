@@ -21,3 +21,12 @@
 //= require jquery.raty.js
 
 //= require_tree .
+
+/*global $*/
+$(function() {
+    $('.slider').slick({
+        dots: true,
+        autoplay: true,
+        autoplaySpeed: 3000,
+    });
+});

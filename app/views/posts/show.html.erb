@@ -12,15 +12,14 @@
         </h5>
          <%= attachment_image_tag @post, :image, fallback: "no_image.jpg", size: "350x400", class: "card-img-top" %>
             <!--いいね数表示-->
-            <div id="likes_btn_<%= @post.id %>">
+            <div  class="card-text text-center" id="likes_btn_<%= @post.id %>">
               <%= render "likes/like", { post: @post} %>
             </div>
 
-            <!--レビュー機能-->
-            <p class="card-text">レビュー</P>
-            <div id="star-rate-<%= @post.id %>"></div>
+           <!--星評価-->
+            <div class="card-text text-center" id="star-rate-<%= @post.id %>">評価：</div>
             <script>
-            $('#star<%= @post.id %>').raty({
+            $('#star-rate-<%= @post.id %>').raty({
               size: 36,
               starOff:  '<%= asset_path('star-off.png') %>',
               starOn : '<%= asset_path('star-on.png') %>',
@@ -31,20 +30,20 @@
              });
             </script>
 
-            <div>
+            <div  class="card-text text-center mt-2">
               <strong>ニックネーム:<%= @user.nickname %></strong>
             </div>
           <!--コメント機能-->
-            <div class="row actions" id="comment_form_post_<%= @post.id %>">
+            <div class="row actions " id="comment_form_post_<%= @post.id %>">
               <%= render "/comments/form", { post: @post, comment: @comment} %>
             </div>
-            <div>
+            <div  class="card-text text-center  mt-2">
               コメント一覧 <%= render "comments/index", { post: @post, user: @user} %>
             </div>
       </div>
             <!--編集・削除ボタン-->
               <% if @post.user_id == current_user.id %>
-              <div class="card-body">
+              <div class="card-body text-center  mt-2">
                 <%= link_to "編集する", edit_post_path(@post), class: "btn btn-success " %>
                 <%= link_to "削除する", post_path(@post), method: :delete, data: {confirm: "この投稿を消しますか？"},  class: "btn btn-success" %>
               </div>
@@ -83,8 +82,8 @@
                       src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyD1L5xEzCmaOkfXXsZOaXGIoNudKZEboaY&callback=initMap">
         </script>
         <style type="text/css">
-          #map { height: 200px;
-                 width: 70%;}
+          #map { height: 400px;
+                 width: 100%;}
         </style>
         <div id="map"></div>
     </div>

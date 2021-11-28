@@ -45,8 +45,8 @@ before_action :authenticate_user!
 
   def destroy
     @post = Post.find(params[:id])
-    @post_image.destroy
-    redirect_to post_path
+    @post.destroy
+    redirect_to posts_path
   end
 
   def post_params

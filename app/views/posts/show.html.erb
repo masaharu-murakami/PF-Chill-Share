@@ -33,11 +33,12 @@
             <div  class="card-text text-center mt-2">
               <strong>ニックネーム:<%= @user.nickname %></strong>
             </div>
+
           <!--コメント機能-->
-            <div class="row actions " id="comment_form_post_<%= @post.id %>">
+            <div class="row actions" id="comment_form_post_<%= @post.id %>">
               <%= render "/comments/form", { post: @post, comment: @comment} %>
             </div>
-            <div  class="card-text text-center  mt-2">
+            <div  class="card-text text-center  mt-2" id="comment_post_<%= @post.id %>">
               コメント一覧 <%= render "comments/index", { post: @post, user: @user} %>
             </div>
       </div>

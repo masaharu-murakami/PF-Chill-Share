@@ -11,6 +11,7 @@
           <%= @post.title %>
         </h5>
          <%= attachment_image_tag @post, :image, fallback: "no_image.jpg", size: "350x400", class: "card-img-top" %>
+
             <!--いいね数表示-->
             <div  class="card-text text-center" id="likes_btn_<%= @post.id %>">
               <%= render "likes/like", { post: @post} %>
@@ -49,7 +50,7 @@
                 <%= link_to "編集する", edit_post_path(@post), class: "btn btn-success " %>
                 <%= link_to "削除する", post_path(@post), method: :delete, data: {confirm: "この投稿を消しますか？"},  class: "btn btn-success" %>
               </div>
-
+　　　　　　　<% end %>
             <!--地図表示-->
             <script type="text/javascript">
           　function initMap() {
@@ -91,4 +92,3 @@
     </div>
   </div>
 </div>
-<% end %>

@@ -24,10 +24,10 @@
               score: <%= post.rate %>,
              });
             </script>
-            
+
             <!--いいね機能-->
-            <div id="likes_btn_<%= post.id %>">
-              <p class="card-text"><%= render "likes/like", { post: post} %></p>
+            <div  class="card-text text-right" id="likes_btn_<%= post.id %>">
+              <%= render "likes/like", { post: post} %>
             </div>
           </div>
         </div>
